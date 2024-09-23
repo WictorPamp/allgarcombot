@@ -1,18 +1,26 @@
-import { Text } from "../Text";
+import { ActivityIndicator } from "react-native";
 import { Container } from "./styles";
 
 interface ContainerProps {
+  style?: {},
   background?: string,
   radius?: number,
   children: JSX.Element|JSX.Element[],
   onPress: () => void;
-  disabled?: boolean
+  disabled?: boolean;
+  loading?: boolean;
 }
 
-export function Button({ background, radius, children, onPress, disabled }: ContainerProps) {
+export function Button({ style, background, radius, children, onPress, disabled, loading }: ContainerProps) {
   return (
-    <Container disabled={disabled} onPress={onPress} background={background} radius={radius}>
-      {children}
+    <Container style={style} disabled={disabled || loading} onPress={onPress} background={background} radius={radius}>
+      {!loading && (
+        children
+      )}
+
+      {loading && (
+        <ActivityIndicator />
+      )}
     </Container>
   )
 }
