@@ -30,7 +30,7 @@ export function ProductModal({ visible, setIsModalVisible, product, onAddToCart 
     >
       <Image
         source={{
-          uri: `http://192.168.15.163:3001/uploads/${product.imagePath}`
+          uri: encodeURI(`http://192.168.15.42:3001/uploads/${product.imagePath}`)
         }}
       >
         <CloseButton onPress={setIsModalVisible}>

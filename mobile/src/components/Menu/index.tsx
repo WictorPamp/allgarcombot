@@ -35,11 +35,12 @@ export function Menu({ onAddToCart, products }: MenuProps) {
         contentContainerStyle={{ paddingHorizontal: 24 }}
         keyExtractor={product => product._id}
         ItemSeparatorComponent={Separator}
-        renderItem={({ item: product}) => (
+        renderItem={({ item: product}) => {
+          return (
           <ProductContainer onPress={() => handleOpenModal(product)}>
             <ProductImage
               source={{
-                uri: `http://192.168.15.163:3001/uploads/${product.imagePath}`
+                uri: encodeURI(`http://192.168.15.42:3001/uploads/${product.imagePath}`)
               }}
             />
             <ProductDetails>
@@ -52,7 +53,7 @@ export function Menu({ onAddToCart, products }: MenuProps) {
               <PlusCircle/>
             </AddToCartButton>
           </ProductContainer>
-        )}
+        )}}
       />
     </>
   );

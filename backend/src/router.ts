@@ -12,6 +12,7 @@ import { createOrder } from './app/useCases/orders/createOrder';
 import { changeOrderStatus } from './app/useCases/orders/changeOrderStatus';
 import { deleteOrder } from './app/useCases/orders/deleteOrder';
 import { deleteProducts } from './app/useCases/products/deleteProducts';
+import { deleteCategory } from './app/useCases/categories/deleteCategory';
 
 export const router = Router();
 
@@ -32,6 +33,9 @@ router.get('/categories', listCategories);
 
 // Criar
 router.post('/categories', createCategory);
+
+//deletar
+router.delete('/categories/:categoryId', deleteCategory);
 
 // Produtos
 // Lista todos
